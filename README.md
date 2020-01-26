@@ -23,4 +23,6 @@
 # 정보 올림피아드 지역본선 2004 중등
 [백준 2609 최대공약수와 최소공배수](https://github.com/haileykim1/Algorithm-Problem/blob/master/%EC%A0%95%EB%B3%B4%EC%98%AC%EB%A6%BC%ED%94%BC%EC%95%84%EB%93%9C%EC%A7%80%EC%97%AD%EB%B3%B8%EC%84%A02004%EC%A4%91%EB%93%B1/2609_%EC%B5%9C%EB%8C%80%EA%B3%B5%EC%95%BD%EC%88%98%EC%99%80%20%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98.cpp)
 
+[백준 2610 회의준비](https://github.com/haileykim1/Algorithm-Problem/blob/master/%EC%A0%95%EB%B3%B4%EC%98%AC%EB%A6%BC%ED%94%BC%EC%95%84%EB%93%9C%EC%A7%80%EC%97%AD%EB%B3%B8%EC%84%A02004%EC%A4%91%EB%93%B1/2610_%ED%9A%8C%EC%9D%98%EC%A4%80%EB%B9%84.cpp)
+
 [백준 2611 자동차경주](https://github.com/haileykim1/Algorithm-Problem/blob/master/%EC%A0%95%EB%B3%B4%EC%98%AC%EB%A6%BC%ED%94%BC%EC%95%84%EB%93%9C%EC%A7%80%EC%97%AD%EB%B3%B8%EC%84%A02004%EC%A4%91%EB%93%B1/2611_%EC%9E%90%EB%8F%99%EC%B0%A8%EA%B2%BD%EC%A3%BC.cpp)
