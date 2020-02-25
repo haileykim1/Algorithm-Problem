@@ -1,24 +1,19 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 
 int main() {
 	cin.tie(NULL);
 	ios::sync_with_stdio(false);
 	int K, n, sum = 0;
-	vector<int> s;
 	cin >> K;
-	for (int i = 0; i < K; ++i) {
+	int s[100000];
+	int top = 0;
+	while (K--) {
 		cin >> n;
-		if (n == 0)
-			s.pop_back();
+		if (n)
+			sum += s[top++] = n;
 		else
-			s.push_back(n);
+			sum -= s[--top];
 	}
-	while (!s.empty()) {
-		n = s.back();
-		sum += n;
-		s.pop_back();
-	}
-	cout << sum;
+	printf("%d",sum);
 }
