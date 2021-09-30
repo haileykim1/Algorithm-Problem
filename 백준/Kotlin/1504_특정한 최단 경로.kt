@@ -3,69 +3,53 @@ import java.io.InputStreamReader
 import java.util.*
 import kotlin.math.min
 
-var N = 0
-var E = 0
-var cost = arrayOf<ArrayList<Pair<Int, Int>>>()
+var dist = arrayOf<IntArray>()
 var v1 = 0
 var v2 = 0
-//0 : 1~노드 , 1: v1~노드, 2: v2~노드
-var dist = arrayOf<IntArray>()
-
-fun Dijkstra(x:Int,  option:Int){
-    var pq = PriorityQueue(Comparator<Pair<Int, Int>>{a, b -> a.second - b.second})
-    pq.add(Pair(x, 0))
-    while(pq.isNotEmpty()){
-        val s = pq.peek().first
-        val e = pq.peek().second
-
-
-        pq.poll()
-        if(e <= dist[option][s]){
-            cost[s].forEach{
-                if(dist[option][it.first] > it.second + dist[option][s]){
-                    dist[option][it.first] = it.second + dist[option][s]
-                    pq.add(Pair(it.first, dist[option][it.first]))
-                }
-            }
-        }
-    }
-}
+var N = 0
+var E = 0
 
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))){
     var tok = StringTokenizer(readLine())
     N = tok.nextToken().toInt()
     E = tok.nextToken().toInt()
-    cost = Array(N + 1){ArrayList<Pair<Int, Int>>()}
-    dist = Array(3){IntArray(N + 1){800001} }
-    for(i in 1..E){
+    dist = Array(N + 1){IntArray(N + 1){800000} }
+
+    repeat(E){
         tok = StringTokenizer(readLine())
         val a = tok.nextToken().toInt()
         val b = tok.nextToken().toInt()
         val c = tok.nextToken().toInt()
-        cost[a].add(Pair(b, c))
-        cost[b].add(Pair(a, c))
+        dist[a][b] = c
+        dist[b][a] = c
     }
     tok = StringTokenizer(readLine())
     v1 = tok.nextToken().toInt()
     v2 = tok.nextToken().toInt()
-    dist[0][1] = 0
-    dist[1][v1] = 0
-    dist[2][v2] = 0
+    for(i in 1..N)
+        dist[i][i] = 0
 
-    Dijkstra(1, 0)
-    Dijkstra(v1, 1)
-    Dijkstra(v2, 2)
-
-    val ans = min(dist[0][v1] + dist[1][v2] + dist[2][N], dist[0][v2] + dist[2][v1] + dist[1][N])
-    if(ans >= 800001){
-        print("-1\n")
-    }else{
-
-        print("$ans\n")
+    for(k in 1..N){
+        for(i in 1..N){
+            for(j in 1..N){
+                if(dist[i][k] + dist[k][j] < dist[i][j])
+                    dist[i][j] = dist[i][k] + dist[k][j]
+            }
+        }
     }
+    var temp1 = dist[v1][v2]
+    var v1First = false
+    var temp2 = dist[1][v2] + dist[v1][N]
+    if(dist[1][v1] + dist[v2][N] < dist[1][v2] + dist[v1][N]){
+        temp2 = dist[1][v1] + dist[v2][N]
+    }
+        v1First = true
+        var temp3 = temp1 + temp2
 
-
-
-
+    if(v1First && (dist[1][v1] >= 800000 || dist[v2][N] >= 800000 || temp1 >= 800000)){
+        print("-1\n")
+    }else if(!v1First && (dist[1][v2] >= 800000 || dist[v1][N] >= 800000 || temp1 >= 800000))
+    else
+        print("${temp3}\n")
 
 }
